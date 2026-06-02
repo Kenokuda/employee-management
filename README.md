@@ -44,10 +44,14 @@ The easiest way to run this application locally is using Docker Compose.
    ```
 
 2. **Build and start the containers:**
-   　　```bash
-   　　docker-compose up --build
+
+   ```bash
+   docker-compose up --build
+
+   ```
 
 3. **Setup the database and seed data:**
+
    Open a new terminal and run:
 
    ```bash
@@ -64,11 +68,15 @@ The easiest way to run this application locally is using Docker Compose.
 ## 🛡️ Key Implementation Highlights
 
 1. **Robust Security with Strong Parameters**
+
    The backend safely extracts data by enforcing nested structures. Even if malicious payloads attempt to inject unauthorized fields (e.g., is_admin), the Rails backend strict-filters them at the controller level:
 
-def employee_params
-params.require(:employee).permit(:employee_id, :name, :role, :department_id, project_ids: [])
-end
+```ruby
+　def employee_params
+　　params.require(:employee).permit(:employee_id, :name, :role, :department_id, project_ids: [])
+　end
+```
 
 2. **Client-Side Data Manipulation**
+
    Implemented efficient client-side sorting and state preservation in React, optimizing network requests by filtering and rendering rows dynamically.
